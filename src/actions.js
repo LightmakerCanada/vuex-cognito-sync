@@ -4,13 +4,14 @@ import 'amazon-cognito-js'
 import * as types from './mutation-types'
 
 const defaultRegion = 'us-east-1'
-const cognito = {
-  manager: null,
-  dataset: null,
-  credentials: null
-}
 
 export default function actionsFactory (config) {
+  const cognito = {
+    manager: null,
+    dataset: null,
+    credentials: null
+  }
+
   return {
 
     // Cognito init actions
