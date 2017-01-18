@@ -91,8 +91,11 @@ export default function actionsFactory (config) {
       return new Promise((resolve, reject) => {
         cognito.dataset.synchronize({
           onSuccess: (dataset, newRecords) => {
-            commit(types.SYNC, { dataset })
-            resolve()
+            dataset.getAllRecords((err, records) => {
+              if (err) return reject(err)
+              commit(types.SYNC, { records })
+              resolve()
+            })
           },
           onFailure: reject,
           onConflict: (dataset, conflicts, cb) => {

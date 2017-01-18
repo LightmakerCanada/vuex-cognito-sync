@@ -7,7 +7,9 @@ export default {
   [types.REMOVE] (state, { key }) {
     delete state[key]
   },
-  [types.SYNC] (state, payload) {
-    // TODO
+  [types.SYNC] (state, { records }) {
+    for (let record of records) {
+      state[record.key] = record.value
+    }
   }
 }
