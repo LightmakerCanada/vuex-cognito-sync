@@ -14,6 +14,8 @@ export default function actionsFactory (config) {
 
   return {
 
+    _cognito: cognito, // Expose for testing
+
     // Cognito init actions
 
     init ({ dispatch }, { name, logins }) {
