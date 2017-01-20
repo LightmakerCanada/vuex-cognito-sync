@@ -24,7 +24,7 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "sinon": "^1.17.7",
-    "tap-xunit": "^1.6.0"
+    "tap-xunit": "^1.7.0"
   },
   "scripts": {
     "build": "babel src --out-dir dist",

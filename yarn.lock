@@ -284,8 +284,8 @@ ava@^0.17.0:
     update-notifier "^1.0.0"
 
 aws-sdk@^2.7.21:
-  version "2.7.26"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.7.26.tgz#ad3459f79e8c83b9d1332318d95002f222afa877"
+  version "2.7.27"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.7.27.tgz#6fc4793c166172a0f95af7dce177244cb471c50a"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -306,10 +306,10 @@ aws4@^1.2.1:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.5.0.tgz#0a29ffb79c31c9e712eeb087e8e7a64b4a56d755"
 
 babel-cli@^6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.22.0.tgz#cdd910ad881412de577d7c5f82cfa2d9aea88ded"
+  version "6.22.2"
+  resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.22.2.tgz#3f814c8acf52759082b8fedd9627f938936ab559"
   dependencies:
-    babel-core "^6.22.0"
+    babel-core "^6.22.1"
     babel-polyfill "^6.22.0"
     babel-register "^6.22.0"
     babel-runtime "^6.22.0"
@@ -334,9 +334,9 @@ babel-code-frame@^6.16.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@^6.17.0, babel-core@^6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.22.0.tgz#643deaeb520bcd2b06c11e39945c877e0200d128"
+babel-core@^6.17.0, babel-core@^6.22.0, babel-core@^6.22.1:
+  version "6.22.1"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.22.1.tgz#9c5fd658ba1772d28d721f6d25d968fc7ae21648"
   dependencies:
     babel-code-frame "^6.22.0"
     babel-generator "^6.22.0"
@@ -345,7 +345,7 @@ babel-core@^6.17.0, babel-core@^6.22.0:
     babel-register "^6.22.0"
     babel-runtime "^6.22.0"
     babel-template "^6.22.0"
-    babel-traverse "^6.22.0"
+    babel-traverse "^6.22.1"
     babel-types "^6.22.0"
     babylon "^6.11.0"
     convert-source-map "^1.1.0"
@@ -951,9 +951,9 @@ babel-template@^6.22.0, babel-template@^6.7.0:
     babylon "^6.11.0"
     lodash "^4.2.0"
 
-babel-traverse@^6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.22.0.tgz#998b6de3228bd2bab0d748a6ec0588c32033d3c7"
+babel-traverse@^6.22.0, babel-traverse@^6.22.1:
+  version "6.22.1"
+  resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.22.1.tgz#3b95cd6b7427d6f1f757704908f2fc9748a5f59f"
   dependencies:
     babel-code-frame "^6.22.0"
     babel-messages "^6.22.0"
@@ -1685,8 +1685,8 @@ eslint-plugin-standard@^2.0.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-2.0.1.tgz#3589699ff9c917f2c25f76a916687f641c369ff3"
 
 eslint@^3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.13.1.tgz#564d2646b5efded85df96985332edd91a23bff25"
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.14.0.tgz#2c617e5f782fda5cbee5bc8be7ef5053af8e63a3"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -3221,7 +3221,7 @@ regenerator-transform@0.9.8:
 
 regex-cache@^0.4.2:
   version "0.4.3"
-  resolved "http://registry.npmjs.org/regex-cache/-/regex-cache-0.4.3.tgz#9b1a6c35d4d0dfcef5711ae651e8e9d3d7114145"
+  resolved "https://registry.yarnpkg.com/regex-cache/-/regex-cache-0.4.3.tgz#9b1a6c35d4d0dfcef5711ae651e8e9d3d7114145"
   dependencies:
     is-equal-shallow "^0.1.3"
     is-primitive "^2.0.0"
@@ -3595,9 +3595,9 @@ tap-parser@~1.2.2:
   optionalDependencies:
     readable-stream "^2"
 
-tap-xunit@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/tap-xunit/-/tap-xunit-1.6.0.tgz#5f734eedb84d966f6e9409008598194ae01d8690"
+tap-xunit@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/tap-xunit/-/tap-xunit-1.7.0.tgz#c0fe296a4ff270e042467e754419b5f049bef8be"
   dependencies:
     duplexer "~0.1.1"
     minimist "~1.2.0"
