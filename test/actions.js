@@ -177,3 +177,7 @@ test.serial('sync action - failure', async t => {
   const error = await t.throws(actions.sync({ commit }))
   t.is(error.message, 'error message')
 })
+
+test.todo('sync action - conflict')
+test.todo('sync action - dataset deleted')
+test.todo('sync action - dataset merged')
