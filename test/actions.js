@@ -27,7 +27,7 @@ test('init action - success', async t => {
   const logins = 'logins object'
   await actions.init({ dispatch }, { name, logins })
   sinon.assert.calledWith(dispatch.getCall(0), 'authenticate', { logins })
-  sinon.assert.calledWith(dispatch.getCall(1), 'initCognitoSyncManager')
+  sinon.assert.calledWith(dispatch.getCall(1), 'initSyncManager')
   sinon.assert.calledWith(dispatch.getCall(2), 'openOrCreateDataset', { name })
 })
 
@@ -53,23 +53,23 @@ test.serial('authenticate action - with existing credentials', async t => {
   t.true(actions._cognito.credentials.expired, 'forces refresh of credentials')
 })
 
-test.serial('initCognitoSyncManager action - success', async t => {
+test.serial('initSyncManager action - success', async t => {
   AWS.config.credentials = {
     get: sb.stub().callsArg(0)
   }
   sb.stub(AWS, 'CognitoSyncManager')
-  let manager = await actions.initCognitoSyncManager()
+  let manager = await actions.initSyncManager()
   sinon.assert.calledOnce(AWS.config.credentials.get)
   sinon.assert.calledOnce(AWS.CognitoSyncManager)
   t.is(manager, actions._cognito.manager)
 })
 
-test.serial('initCognitoSyncManager action - failure', async t => {
+test.serial('initSyncManager action - failure', async t => {
   AWS.config.credentials = {
     get: sb.stub().callsArgWith(0, new Error('error message'))
   }
   sb.stub(AWS, 'CognitoSyncManager')
-  let error = await t.throws(actions.initCognitoSyncManager())
+  let error = await t.throws(actions.initSyncManager())
   sinon.assert.calledOnce(AWS.config.credentials.get)
   sinon.assert.notCalled(AWS.CognitoSyncManager)
   t.is(error.message, 'error message')

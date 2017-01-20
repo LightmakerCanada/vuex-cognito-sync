@@ -21,7 +21,7 @@ export default function actionsFactory (config) {
     init ({ dispatch }, { name, logins }) {
       return dispatch('authenticate', { logins })
         .then(() => {
-          return dispatch('initCognitoSyncManager')
+          return dispatch('initSyncManager')
         })
         .then(() => {
           return dispatch('openOrCreateDataset', { name })
@@ -44,7 +44,7 @@ export default function actionsFactory (config) {
       return Promise.resolve()
     },
 
-    initCognitoSyncManager () {
+    initSyncManager () {
       return new Promise((resolve, reject) => {
         AWS.config.credentials.get((err) => {
           if (err) return reject(err)

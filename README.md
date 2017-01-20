@@ -2,9 +2,9 @@
 
 [![CircleCI](https://img.shields.io/circleci/project/github/LightmakerCanada/vuex-cognito-sync.svg)]()
 
-🚧 Under Construction! 🚧
-
 A [Vuex](https://vuex.vuejs.org) wrapper for [Amazon Cognito Sync Manager](https://github.com/aws/amazon-cognito-js).
+
+🚧 Work in progress! 🚧
 
 
 # Installation
@@ -58,11 +58,11 @@ this.$store.dispatch('myNamespace/authenticate', {
 })
 ```
 
-## initCognitoSyncManager
+## initSyncManager
 Instantiate a new `AWS.CognitoSyncManager`.
 
 ```js
-this.$store.dispatch('myNamespace/initCognitoSyncManager').then((manager) => {
+this.$store.dispatch('myNamespace/initSyncManager').then((manager) => {
   // do stuff
 })
 ```
@@ -79,7 +79,7 @@ this.$store.dispatch('myNamespace/openOrCreateDataset', {
 ```
 
 ## init
-A shortcut that dispatches all three `authenticate`, `initCognitoSyncManager`, and `openOrCreateDataset` actions respectively.
+A shortcut that dispatches all three `authenticate`, `initSyncManager`, and `openOrCreateDataset` actions respectively.
 Useful when bootstrapping an app.
 
 ```js
