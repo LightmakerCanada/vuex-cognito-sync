@@ -1,5 +1,16 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/v0.2.0...v0.3.0) (2017-01-20)
+
+
+### Features
+
+* rename `initCognitoSyncManager` action to `initSyncManager` ([6697d55](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/6697d55))
+* renamed actions and moved some to static methods on `CognitoSync` class ([a8a1d73](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/a8a1d73))
+
+
+
 <a name="0.2.0"></a>
-# 0.2.0 (2017-01-20)
+# [0.2.0](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/6dd5c3c...v0.2.0) (2017-01-20)
 
 
 ### Features
