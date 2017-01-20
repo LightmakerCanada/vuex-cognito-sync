@@ -16,7 +16,9 @@ $ yarn add vuex-cognito-sync
 $ npm install --save vuex-cognito-sync
 ```
 
+# Usage
 Create a config file:
+
 ```js
 // cognito.config.json
 {
@@ -29,97 +31,86 @@ Add module to your Vuex store:
 ```js
 import Vue from 'vue'
 import Vuex from 'vuex'
-import config from './cognito.config.json'
+import CognitoSync from 'vuex-cognito-sync'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    myNamespace: new CognitoSync(config)
+    myNamespace: new CognitoSync('datasetName')
   }
 })
 ```
 
-
-# Initialization Actions
-Before you can start working with Cognito Sync data, use the following actions to authenticate with Cognito and instantiate a Sync Manager.
-
-## authenticate
-Creates a new `AWS.CognitoIdentityCredentials` instance and adds it to the AWS SDK `config` object.
-If already authenticated, new logins will be merged with existing logins.
-
+Call init method when bootstrapping your app:
 ```js
-this.$store.dispatch('myNamespace/authenticate', {
-  logins: {
-    'graph.facebook.com': '** token **' // Optional Cognito login tokens
-  }
-}).then(() => {
-  // do stuff
-})
+import CognitoSync from 'vuex-cognito-sync'
+import config from './cognito.config.json'
+
+// optional Cognito login tokens
+let logins = {
+  'graph.facebook.com': '** token **'
+}
+
+CognitoSync.init(config, logins)
+  .then(() => {
+    // do stuff
+  })
+  .catch((err) => {
+    if (err.code === 'NotAuthorizedException') {
+      // login token is probably expired
+    }
+  })
 ```
 
-## initSyncManager
-Instantiate a new `AWS.CognitoSyncManager`.
-
+Initialize a datastore and perform initial sync:
 ```js
-this.$store.dispatch('myNamespace/initSyncManager').then((manager) => {
-  // do stuff
-})
+this.$store.dispatch('myNamespace/init')
+  .then(() => {
+    return this.$store.dispatch('myNamespace/sync')
+  })
 ```
 
-## openOrCreateDataset
-Open or create a dataset with the given name.
 
-```js
-this.$store.dispatch('myNamespace/openOrCreateDataset', {
-  name: 'datasetName'
-}).then((dataset) => {
-  // do stuff
-})
-```
+# Actions
 
 ## init
-A shortcut that dispatches all three `authenticate`, `initSyncManager`, and `openOrCreateDataset` actions respectively.
-Useful when bootstrapping an app.
+Initialize this module's dataset. Must be dispatched before any other actions.
 
 ```js
-this.$store.dispatch('myNamespace/init', {
-  name: 'datasetName',
-  logins: {
-    'graph.facebook.com': '** token **' // Optional Cognito login tokens
-  }
-})
+this.$store.dispatch('myNamespace/init')
+  .then((dataset) => {
+    // do stuff
+  })
 ```
-
-
-# Data Actions
-Once a Cognito Sync Manager has been initialized using the above actions, you can use
-these actions to start working with data.
 
 ## put
 ```js
 this.$store.dispatch('myNamespace/put', {
-  key: 'someKey',
-  value: 'someValue'
-}).then(() => {
-  // do stuff
-})
+    key: 'someKey',
+    value: 'someValue'
+  })
+  .then(() => {
+    // do stuff
+  })
 ```
 
 ## remove
 ```js
 this.$store.dispatch('myNamespace/remove', {
-  key: 'someKey'
-}).then(() => {
-  // do stuff
-})
+    key: 'someKey'
+  })
+  .then(() => {
+    // do stuff
+  })
 ```
 
 ## sync
 Tell the dataset to synchronize with the Cognito Sync server, and then update the state in Vuex.
 
 ```js
-this.$store.dispatch('myNamespace/sync').then(() => {
-  // do stuff
-})
+this.$store.dispatch('myNamespace/sync')
+  .then(() => {
+    // do stuff
+  })
 ```
