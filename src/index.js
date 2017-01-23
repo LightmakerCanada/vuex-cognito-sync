@@ -58,6 +58,16 @@ export default class CognitoSync {
   }
 
   /**
+   * Removes local storage and invalidates cached identity ID.
+   * @returns {Promise}
+   */
+  static wipe () {
+    if (this.context.manager) this.context.manager.wipeData()
+    AWS.config.credentials.clearCachedId()
+    return Promise.resolve()
+  }
+
+  /**
    * Construct a new CognitoSync Vuex module.
    * @param {String} datasetName - Name of the dataset.
    */

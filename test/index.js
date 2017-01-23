@@ -18,7 +18,7 @@ test.afterEach.always(t => {
   sb.restore()
 })
 
-test.serial('class init method', async t => {
+test.serial('class init() method', async t => {
   let logins = 'logins object'
   sb.stub(CognitoSync, 'authenticate').returns(Promise.resolve())
   sb.stub(CognitoSync, 'initSyncManager').returns(Promise.resolve())
@@ -28,7 +28,7 @@ test.serial('class init method', async t => {
   sinon.assert.callOrder(CognitoSync.authenticate, CognitoSync.initSyncManager)
 })
 
-test.serial('class authenticate method - create', async t => {
+test.serial('class authenticate() method - create', async t => {
   sb.stub(AWS, 'CognitoIdentityCredentials')
   delete CognitoSync.context.credentials
   let logins = { key: 'value' }
@@ -39,7 +39,7 @@ test.serial('class authenticate method - create', async t => {
   })
 })
 
-test.serial('class authenticate method - get', async t => {
+test.serial('class authenticate() method - get', async t => {
   sb.stub(AWS, 'CognitoIdentityCredentials')
   CognitoSync.context.credentials = { params: { Logins: {} } }
   let logins = { key: 'value' }
@@ -49,7 +49,7 @@ test.serial('class authenticate method - get', async t => {
   t.true(CognitoSync.context.credentials.expired)
 })
 
-test.serial('class initSyncManager method - create', async t => {
+test.serial('class initSyncManager() method - create', async t => {
   AWS.config.credentials = {
     get: sb.stub().callsArgWith(0, null)
   }
@@ -59,7 +59,7 @@ test.serial('class initSyncManager method - create', async t => {
   t.is(CognitoSync.context.manager, manager)
 })
 
-test.serial('class initSyncManager method - get', async t => {
+test.serial('class initSyncManager() method - get', async t => {
   AWS.config.credentials = {
     get: sb.stub().callsArgWith(0, null)
   }
@@ -73,10 +73,31 @@ test.serial('class initSyncManager method - get', async t => {
   delete CognitoSync.context.manager
 })
 
-test.serial('class initSyncManager method - failure', async t => {
+test.serial('class initSyncManager() method - failure', async t => {
   AWS.config.credentials = {
     get: sb.stub().callsArgWith(0, new Error('error message'))
   }
   let error = await t.throws(CognitoSync.initSyncManager())
   t.is(error.message, 'error message')
+})
+
+test('class wipe() method - no manager', async t => {
+  AWS.config.credentials = {
+    clearCachedId: sb.stub()
+  }
+  CognitoSync.context.manager = undefined
+  await CognitoSync.wipe()
+  sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
+})
+
+test('class wipe() method - success', async t => {
+  AWS.config.credentials = {
+    clearCachedId: sb.stub()
+  }
+  CognitoSync.context.manager = {
+    wipeData: sb.stub()
+  }
+  await CognitoSync.wipe()
+  sinon.assert.calledOnce(CognitoSync.context.manager.wipeData)
+  sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
 })
