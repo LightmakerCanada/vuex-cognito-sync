@@ -50,9 +50,7 @@ test.serial('class authenticate() method - get', async t => {
 })
 
 test.serial('class initSyncManager() method - create', async t => {
-  AWS.config.credentials = {
-    get: sb.stub().callsArgWith(0, null)
-  }
+  AWS.config.credentials = { get: sb.stub().callsArgWith(0, null) }
   sb.stub(AWS, 'CognitoSyncManager')
   let manager = await CognitoSync.initSyncManager()
   sinon.assert.callOrder(AWS.config.credentials.get, AWS.CognitoSyncManager)
@@ -60,9 +58,7 @@ test.serial('class initSyncManager() method - create', async t => {
 })
 
 test.serial('class initSyncManager() method - get', async t => {
-  AWS.config.credentials = {
-    get: sb.stub().callsArgWith(0, null)
-  }
+  AWS.config.credentials = { get: sb.stub().callsArgWith(0, null) }
   sb.stub(AWS, 'CognitoSyncManager')
   CognitoSync.context.manager = 'existing manager'
   let manager = await CognitoSync.initSyncManager()
@@ -74,30 +70,24 @@ test.serial('class initSyncManager() method - get', async t => {
 })
 
 test.serial('class initSyncManager() method - failure', async t => {
-  AWS.config.credentials = {
-    get: sb.stub().callsArgWith(0, new Error('error message'))
-  }
+  AWS.config.credentials = { get: sb.stub().callsArgWith(0, new Error('error message')) }
   let error = await t.throws(CognitoSync.initSyncManager())
   t.is(error.message, 'error message')
 })
 
 test('class wipe() method - no manager', async t => {
-  AWS.config.credentials = {
-    clearCachedId: sb.stub()
-  }
+  AWS.config.credentials = { clearCachedId: sb.stub() }
   CognitoSync.context.manager = undefined
   await CognitoSync.wipe()
   sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
 })
 
 test('class wipe() method - success', async t => {
-  AWS.config.credentials = {
-    clearCachedId: sb.stub()
-  }
-  CognitoSync.context.manager = {
-    wipeData: sb.stub()
-  }
+  AWS.config.credentials = { clearCachedId: sb.stub() }
+  CognitoSync.context.datasets = { 'some-dataset': {} }
+  CognitoSync.context.manager = { wipeData: sb.stub() }
   await CognitoSync.wipe()
+  t.deepEqual(CognitoSync.context.datasets, {}, 'clears all datasets')
   sinon.assert.calledOnce(CognitoSync.context.manager.wipeData)
   sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
 })

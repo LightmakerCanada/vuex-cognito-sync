@@ -63,6 +63,7 @@ export default class CognitoSync {
    */
   static wipe () {
     if (this.context.manager) this.context.manager.wipeData()
+    this.context.datasets = {}
     AWS.config.credentials.clearCachedId()
     return Promise.resolve()
   }
