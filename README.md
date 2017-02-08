@@ -129,7 +129,7 @@ It would seem cleaner to use a [plugin](https://vuex.vuejs.org/en/plugins.html) 
 
 But unfortunately, [Amazon Cognito Sync Manager](https://github.com/aws/amazon-cognito-js) performs all operations asynchronously... Even when making `localStorage` changes. This means a plugin would go against Vuex's rule that [mutations must be synchronous](https://vuex.vuejs.org/en/mutations.html#mutations-must-be-synchronous), potentially causing race conditions if you make state changes and then dispatch the `sync` action right away.
 
-If if you have a better idea of how to deal with this, please [open an issue](https://github.com/aws/amazon-cognito-js/issues/new) and let me know!
+If if you have a better idea of how to deal with this, please [open an issue](https://github.com/LightmakerCanada/vuex-cognito-sync/issues/new) and let me know!
 
 # TODO
 - [ ] Configurable conflict resolution logic (currently always resolves with remote record)
