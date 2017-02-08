@@ -8,7 +8,7 @@ A [Vuex](https://vuex.vuejs.org) wrapper for [Amazon Cognito Sync Manager](https
 
 
 # Installation
-Install via [Yarn](http://yarnpkg.com) or NPM:
+Install via [Yarn](http://yarnpkg.com) or npm:
 
 ```sh
 $ yarn add vuex-cognito-sync
@@ -17,6 +17,8 @@ $ npm install --save vuex-cognito-sync
 ```
 
 # Usage
+> `vuex-cognito-sync` is a [namespaced module](https://vuex.vuejs.org/en/modules.html#namespacing). Your app can have multiple Cognito Sync datasets, and synchronize them with Cognito independently.
+
 Create a config file:
 
 ```js
@@ -43,6 +45,7 @@ export default new Vuex.Store({
 ```
 
 Call init method when bootstrapping your app:
+
 ```js
 import CognitoSync from 'vuex-cognito-sync'
 import config from './cognito.config.json'
@@ -64,6 +67,7 @@ CognitoSync.init(config, logins)
 ```
 
 Initialize a datastore and perform initial sync:
+
 ```js
 this.$store.dispatch('myNamespace/init')
   .then(() => {
@@ -85,6 +89,7 @@ this.$store.dispatch('myNamespace/init')
 ```
 
 ## put
+
 ```js
 this.$store.dispatch('myNamespace/put', {
     key: 'someKey',
@@ -96,6 +101,7 @@ this.$store.dispatch('myNamespace/put', {
 ```
 
 ## remove
+
 ```js
 this.$store.dispatch('myNamespace/remove', {
     key: 'someKey'
