@@ -6,19 +6,18 @@ import * as types from '../src/mutation-types'
 import actionsFactory from '../src/actions'
 
 // Start testing
-let sb
 let datasetName = 'datasetName'
 let classContext
 let actions
 
 test.beforeEach(t => {
-  sb = sinon.sandbox.create()
+  t.context.sb = sinon.sandbox.create()
   classContext = { datasets: {} }
   actions = actionsFactory({ datasetName, classContext })
 })
 
 test.afterEach.always(t => {
-  sb.restore()
+  t.context.sb.restore()
 })
 
 test.serial('init action - without sync manager', async t => {
@@ -28,7 +27,7 @@ test.serial('init action - without sync manager', async t => {
 
 test.serial('init action - get existing dataset', async t => {
   classContext.manager = {
-    openOrCreateDataset: sb.stub()
+    openOrCreateDataset: t.context.sb.stub()
   }
   classContext.datasets.datasetName = 'existing dataset'
   let dataset = await actions.init()
@@ -38,14 +37,14 @@ test.serial('init action - get existing dataset', async t => {
 
 test.serial('init action - failure', async t => {
   classContext.manager = {
-    openOrCreateDataset: sb.stub().callsArgWith(1, new Error('error message'))
+    openOrCreateDataset: t.context.sb.stub().callsArgWith(1, new Error('error message'))
   }
   const error = await t.throws(actions.init())
   t.is(error.message, 'error message')
 })
 
 test.serial('put action - without dataset', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   delete classContext.datasets.datasetName
   let error = await t.throws(actions.put({ commit }))
   t.is(error.message, `'${datasetName}' dataset not initialized`)
@@ -53,7 +52,7 @@ test.serial('put action - without dataset', async t => {
 })
 
 test.serial('put action - success', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let payload = {
     key: 'key',
     value: 'value'
@@ -63,7 +62,7 @@ test.serial('put action - success', async t => {
     value: 'record-value'
   }
   classContext.datasets.datasetName = {
-    put: sb.stub().callsArgWith(2, null, record)
+    put: t.context.sb.stub().callsArgWith(2, null, record)
   }
   await actions.put({ commit }, payload)
   sinon.assert.calledWith(classContext.datasets.datasetName.put, payload.key, payload.value)
@@ -74,13 +73,13 @@ test.serial('put action - success', async t => {
 })
 
 test.serial('put action - failure', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let payload = {
     key: 'key',
     value: 'value'
   }
   classContext.datasets.datasetName = {
-    put: sb.stub().callsArgWith(2, new Error('error message'))
+    put: t.context.sb.stub().callsArgWith(2, new Error('error message'))
   }
   const error = await t.throws(actions.put({ commit }, payload))
   sinon.assert.notCalled(commit)
@@ -88,7 +87,7 @@ test.serial('put action - failure', async t => {
 })
 
 test.serial('remove action - without dataset', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let key = 'key'
   delete classContext.datasets.datasetName
   let error = await t.throws(actions.remove({ commit }, { key }))
@@ -97,11 +96,11 @@ test.serial('remove action - without dataset', async t => {
 })
 
 test.serial('remove action - success', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let key = 'key'
   let record = {}
   classContext.datasets.datasetName = {
-    remove: sb.stub().callsArgWith(1, null, record)
+    remove: t.context.sb.stub().callsArgWith(1, null, record)
   }
   await actions.remove({ commit }, { key })
   sinon.assert.calledWith(classContext.datasets.datasetName.remove, key)
@@ -109,10 +108,10 @@ test.serial('remove action - success', async t => {
 })
 
 test.serial('remove action - failure', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let key = 'key'
   classContext.datasets.datasetName = {
-    remove: sb.stub().callsArgWith(1, new Error('error message'))
+    remove: t.context.sb.stub().callsArgWith(1, new Error('error message'))
   }
   const error = await t.throws(actions.remove({ commit }, { key }))
   sinon.assert.notCalled(commit)
@@ -120,7 +119,7 @@ test.serial('remove action - failure', async t => {
 })
 
 test.serial('sync action - without dataset', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   delete classContext.datasets.datasetName
   let error = await t.throws(actions.sync({ commit }))
   t.is(error.message, `'${datasetName}' dataset not initialized`)
@@ -128,13 +127,13 @@ test.serial('sync action - without dataset', async t => {
 })
 
 test.serial('sync action - success', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   let records = []
   classContext.datasets.datasetName = {
     synchronize: (callbacks) => {
       callbacks.onSuccess(classContext.datasets.datasetName)
     },
-    getAllRecords: sb.stub().callsArgWith(0, null, records)
+    getAllRecords: t.context.sb.stub().callsArgWith(0, null, records)
   }
   await actions.sync({ commit })
   sinon.assert.calledOnce(classContext.datasets.datasetName.getAllRecords)
@@ -142,7 +141,7 @@ test.serial('sync action - success', async t => {
 })
 
 test.serial('sync action - failure', async t => {
-  let commit = sb.stub()
+  let commit = t.context.sb.stub()
   classContext.datasets.datasetName = {
     synchronize: (callbacks) => {
       callbacks.onFailure(new Error('error message'))
