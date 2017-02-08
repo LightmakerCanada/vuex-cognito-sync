@@ -4,9 +4,11 @@ export default {
   [types.PUT] (state, { key, value }) {
     state[key] = value
   },
+
   [types.REMOVE] (state, { key }) {
     delete state[key]
   },
+
   [types.SYNC] (state, { records }) {
     // Delete existing keys - Cognito datastore is the source of truth
     for (let key in state) {

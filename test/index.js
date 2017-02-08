@@ -6,6 +6,7 @@ import 'amazon-cognito-js'
 // Modules to test
 import CognitoSync from '../src'
 import config from './test-config.json'
+import mutations from '../src/mutations'
 
 // Start testing
 test.beforeEach(t => {
@@ -88,4 +89,11 @@ test('class wipe() method - success', async t => {
   t.deepEqual(CognitoSync.context.datasets, {}, 'clears all datasets')
   sinon.assert.calledOnce(CognitoSync.context.manager.wipeData)
   sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
+})
+
+test('constructor()', t => {
+  const instance = new CognitoSync('datasetName')
+  t.is(instance.namespaced, true)
+  t.deepEqual(instance.state, {})
+  t.is(instance.mutations, mutations)
 })
