@@ -114,3 +114,9 @@ this.$store.dispatch('myNamespace/sync')
     // do stuff
   })
 ```
+
+# TODO
+
+- [ ] Configurable conflict resolution logic (currently always resolves with remote record)
+- [ ] Add dataset deleted handling
+- [ ] Add datasets merged handling
