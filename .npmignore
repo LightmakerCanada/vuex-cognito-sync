@@ -4,7 +4,5 @@
 .npm
 .nyc_output
 coverage/
-dist/
 logs/
-node_modules/
 npm-debug.log*
