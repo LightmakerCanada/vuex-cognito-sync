@@ -1,6 +1,7 @@
 # vuex-cognito-sync
 
-[![CircleCI](https://img.shields.io/circleci/project/github/LightmakerCanada/vuex-cognito-sync.svg)]()
+[![CircleCI](https://img.shields.io/circleci/project/github/LightmakerCanada/vuex-cognito-sync.svg)](https://circleci.com/gh/LightmakerCanada/vuex-cognito-sync)
+[![Coveralls](https://img.shields.io/coveralls/LightmakerCanada/vuex-cognito-sync.svg)](https://coveralls.io/github/LightmakerCanada/vuex-cognito-sync)
 
 A [Vuex](https://vuex.vuejs.org) wrapper for [Amazon Cognito Sync Manager](https://github.com/aws/amazon-cognito-js).
 
