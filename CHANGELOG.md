@@ -1,3 +1,13 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.1...v0.4.2) (2017-02-09)
+
+
+### Features
+
+* don't import entire AWS SDK ([0a84dde](https://github.com/lightmakercanada/vuex-cognito-sync/commit/0a84dde))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.0...v0.4.1) (2017-02-08)
 
