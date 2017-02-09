@@ -1,4 +1,4 @@
-import AWS from 'aws-sdk'
+import AWS from 'aws-sdk/global'
 import 'amazon-cognito-js'
 import ActionsFactory from './actions'
 import mutations from './mutations'

@@ -1,6 +1,6 @@
 import test from 'ava'
 import sinon from 'sinon'
-import AWS from 'aws-sdk'
+import AWS from 'aws-sdk/global'
 import 'amazon-cognito-js'
 
 // Modules to test
