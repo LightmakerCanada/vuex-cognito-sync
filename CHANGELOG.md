@@ -1,3 +1,13 @@
+<a name="0.4.3"></a>
+## [0.4.3](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.2...v0.4.3) (2017-02-15)
+
+
+### Features
+
+* use `babel-preset-env` with "> 1%" and "last 2 versions" browser support ([a3ede33](https://github.com/lightmakercanada/vuex-cognito-sync/commit/a3ede33))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.1...v0.4.2) (2017-02-09)
 
