@@ -1,3 +1,13 @@
+<a name="0.4.4"></a>
+## [0.4.4](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.3...v0.4.4) (2017-02-22)
+
+
+### Bug Fixes
+
+* error thrown when calling `wipe()` without AWS credentials ([a06a849](https://github.com/lightmakercanada/vuex-cognito-sync/commit/a06a849))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.2...v0.4.3) (2017-02-15)
 
