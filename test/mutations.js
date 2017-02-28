@@ -30,6 +30,10 @@ test('SYNC mutation', t => {
   state.oldKey = 'old value'
   let records = [
     {
+      key: 'oldKey',
+      value: ''
+    },
+    {
       key: 'key1',
       value: 'value1'
     },

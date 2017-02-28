@@ -16,6 +16,7 @@ export default {
     }
     // Assign keys from Cognito datastore
     for (let record of records) {
+      if (!record.value) continue
       state[record.key] = record.value
     }
   }
