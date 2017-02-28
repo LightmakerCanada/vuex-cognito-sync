@@ -1,3 +1,13 @@
+<a name="0.4.5"></a>
+## [0.4.5](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.4...v0.4.5) (2017-02-28)
+
+
+### Bug Fixes
+
+* records aren't fully removed from Vuex store when removed from Cognito Sync ([0a268c7](https://github.com/lightmakercanada/vuex-cognito-sync/commit/0a268c7))
+
+
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.3...v0.4.4) (2017-02-22)
 
