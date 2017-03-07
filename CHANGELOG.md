@@ -1,3 +1,13 @@
+<a name="0.4.7"></a>
+## [0.4.7](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.6...v0.4.7) (2017-03-07)
+
+
+### Bug Fixes
+
+* `AWS.CognitoSync is not a constructor` error because AWS ([19a46e7](https://github.com/lightmakercanada/vuex-cognito-sync/commit/19a46e7))
+
+
+
 <a name="0.4.6"></a>
 ## [0.4.6](https://github.com/lightmakercanada/vuex-cognito-sync/compare/v0.4.5...v0.4.6) (2017-03-07)
 
