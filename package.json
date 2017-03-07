@@ -7,7 +7,7 @@
   "author": "Adam Biggs <adam.biggs@lightmaker.com>",
   "license": "MIT",
   "dependencies": {
-    "amazon-cognito-js": "^1.1.0",
+    "amazon-cognito-js": "aws/amazon-cognito-js#b57038ca817981a60bd8b26c2ddaff27c81b908a",
     "aws-sdk": "^2.7.21",
     "vuex": "^2.1.1"
   },
