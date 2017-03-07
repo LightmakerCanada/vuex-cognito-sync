@@ -17,6 +17,10 @@ test.afterEach.always(t => {
   t.context.sb.restore()
 })
 
+test('imports CognitoSync client because `amazon-cognito-js` doesn\'t... ಠ_ಠ', t => {
+  t.is(typeof AWS.CognitoSync, 'function')
+})
+
 test.serial('class init() method', async t => {
   let logins = 'logins object'
   t.context.sb.stub(CognitoSync, 'authenticate').returns(Promise.resolve())
