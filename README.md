@@ -7,9 +7,6 @@
 
 A [Vuex](https://vuex.vuejs.org) wrapper for [Amazon Cognito Sync Manager](https://github.com/aws/amazon-cognito-js).
 
-🚧 Work in progress! 🚧
-
-
 # Installation
 Install via [Yarn](http://yarnpkg.com) or npm:
 
