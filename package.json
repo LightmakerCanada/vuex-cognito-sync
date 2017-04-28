@@ -9,6 +9,7 @@
   "dependencies": {
     "amazon-cognito-js": "aws/amazon-cognito-js#b57038ca817981a60bd8b26c2ddaff27c81b908a",
     "aws-sdk": "^2.46.0",
+    "vue": "^2.3.0",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
