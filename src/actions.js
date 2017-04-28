@@ -75,29 +75,31 @@ export default function actionsFactory ({ datasetName, classContext }) {
       }
       return new Promise((resolve, reject) => {
         classContext.datasets[datasetName].synchronize({
-          onSuccess: (dataset, newRecords) => {
+          onSuccess: (dataset, updates) => {
             dataset.getAllRecords((err, records) => {
               if (err) return reject(err)
               commit(types.SYNC, { records })
               resolve()
             })
           },
-          onFailure: reject,
-          onConflict: (dataset, conflicts, cb) => {
+          onFailure: (err) => {
+            reject(err)
+          },
+          onConflict: (dataset, conflicts, callback) => {
             let resolved = conflicts.map((conflict) => {
               return conflict.resolveWithRemoteRecord() // TODO: Make configurable
             })
             classContext.datasets[datasetName].resolve(resolved, () => {
-              cb(true)
+              callback(true)
               resolve()
             })
           },
-          onDatasetDeleted: (dataset, datasetName, cb) => {
-            cb(true) // TODO: Make configurable
+          onDatasetDeleted: (dataset, deletedDataset, callback) => {
+            callback(true) // TODO: Make configurable
             resolve()
           },
-          onDatasetsMerged: (dataset, datasetNames, cb) => {
-            cb(true) // TODO: Make configurable
+          onDatasetsMerged: (dataset, merges, callback) => {
+            callback(true) // TODO: Make configurable
             resolve()
           }
         })
