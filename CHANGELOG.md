@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/v1.0.0...v1.0.1) (2017-05-25)
+
+
+### Bug Fixes
+
+* signature expired errors if the user's system clock is out of sync ([6567b7a](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/6567b7a))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/v0.4.7...v1.0.0) (2017-04-28)
 
