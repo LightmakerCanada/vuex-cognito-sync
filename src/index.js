@@ -31,6 +31,7 @@ export default class CognitoSync {
     if (!this.context.credentials) {
       // Build credentials instance if none exists yet
       AWS.config.region = process.env.AWS_REGION || defaultRegion
+      AWS.config.correctClockSkew = true
       this.context.credentials = AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: config.IdentityPoolId,
         Logins: logins || {}
