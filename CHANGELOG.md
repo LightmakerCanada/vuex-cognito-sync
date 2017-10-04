@@ -1,5 +1,15 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.1...1.0.2) (2017-10-04)
+
+
+### Features
+
+* update dependencies and remove redundant `babel-polyfill` ([e12a6bb](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/e12a6bb))
+
+
+
 <a name="1.0.1"></a>
-## [1.0.1](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/v1.0.0...v1.0.1) (2017-05-25)
+## [1.0.1](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/v1.0.0...1.0.1) (2017-05-25)
 
 
 ### Bug Fixes
