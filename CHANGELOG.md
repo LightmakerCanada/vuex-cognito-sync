@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.2...1.0.3) (2017-10-05)
+
+
+### Features
+
+* move `vue`, `vuex`, and `aws-sdk` to `peerDependencies` ([494edb4](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/494edb4))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.1...1.0.2) (2017-10-04)
 
