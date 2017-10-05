@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.3...1.0.4) (2017-10-05)
+
+
+### Bug Fixes
+
+* intermittent `Missing required key 'IdentityId' in params` errors ([5bb5d76](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/5bb5d76))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.2...1.0.3) (2017-10-05)
 
