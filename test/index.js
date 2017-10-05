@@ -32,7 +32,9 @@ test.serial('class init() method', async t => {
 })
 
 test.serial('class authenticate() method - create', async t => {
-  t.context.sb.stub(AWS, 'CognitoIdentityCredentials')
+  t.context.sb.stub(AWS, 'CognitoIdentityCredentials').returns({
+    refresh: t.context.sb.stub().callsArgWith(0, null)
+  })
   delete CognitoSync.context.credentials
   let logins = { key: 'value' }
   await CognitoSync.authenticate(config, logins)
@@ -44,7 +46,10 @@ test.serial('class authenticate() method - create', async t => {
 
 test.serial('class authenticate() method - get', async t => {
   t.context.sb.stub(AWS, 'CognitoIdentityCredentials')
-  CognitoSync.context.credentials = { params: { Logins: {} } }
+  CognitoSync.context.credentials = {
+    params: { Logins: {} },
+    refresh: t.context.sb.stub().callsArgWith(0, null)
+  }
   let logins = { key: 'value' }
   await CognitoSync.authenticate(config, logins)
   sinon.assert.notCalled(AWS.CognitoIdentityCredentials)

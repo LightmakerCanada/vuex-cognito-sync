@@ -347,8 +347,8 @@ ava@^0.22.0:
     update-notifier "^2.1.0"
 
 aws-sdk@^2:
-  version "2.127.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.127.0.tgz#3d70e8f868c234a212f7b62d5a0452561a63b4dc"
+  version "2.128.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.128.0.tgz#b9be561c5e3733c0068c6121b587674534662d4b"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"

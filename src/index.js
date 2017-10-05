@@ -28,20 +28,26 @@ export default class CognitoSync {
    * @returns {Promise}
    */
   static authenticate (config, logins) {
-    if (!this.context.credentials) {
-      // Build credentials instance if none exists yet
-      AWS.config.region = process.env.AWS_REGION || defaultRegion
-      AWS.config.correctClockSkew = true
-      this.context.credentials = AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: config.IdentityPoolId,
-        Logins: logins || {}
+    return new Promise((resolve, reject) => {
+      if (!this.context.credentials) {
+        // Build credentials instance if none exists yet
+        AWS.config.region = process.env.AWS_REGION || defaultRegion
+        AWS.config.correctClockSkew = true
+        this.context.credentials = AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: config.IdentityPoolId,
+          Logins: logins || {}
+        })
+      } else {
+        // Update cached credentials
+        this.context.credentials.params.Logins = Object.assign(this.context.credentials.params.Logins, logins)
+        this.context.credentials.expired = true // Expire credentials so they are refreshed on the next request
+      }
+      // Call refresh method in order to authenticate user and get new temp credentials
+      this.context.credentials.refresh((err) => {
+        if (err) return reject(err)
+        resolve(this.context.credentials)
       })
-    } else {
-      // Update cached credentials
-      this.context.credentials.params.Logins = Object.assign(this.context.credentials.params.Logins, logins)
-      this.context.credentials.expired = true // Expire credentials so they are refreshed on the next request
-    }
-    return Promise.resolve(this.context.credentials)
+    })
   }
 
   /**
