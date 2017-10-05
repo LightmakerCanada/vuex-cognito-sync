@@ -7,13 +7,11 @@
   "author": "Adam Biggs <adam.biggs@lightmaker.com>",
   "license": "MIT",
   "dependencies": {
-    "amazon-cognito-js": "aws/amazon-cognito-js#b57038ca817981a60bd8b26c2ddaff27c81b908a",
-    "aws-sdk": "^2.46.0",
-    "vue": "^2.3.0",
-    "vuex": "^2.3.1"
+    "amazon-cognito-js": "aws/amazon-cognito-js#b57038ca817981a60bd8b26c2ddaff27c81b908a"
   },
   "devDependencies": {
     "ava": "^0.22.0",
+    "aws-sdk": "^2",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
@@ -29,7 +27,9 @@
     "eslint-plugin-standard": "^3.0.1",
     "nyc": "^11.2.1",
     "sinon": "^4.0.1",
-    "tap-xunit": "^1.7.0"
+    "tap-xunit": "^1.7.0",
+    "vue": "^2",
+    "vuex": "^2"
   },
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src --out-dir dist",
@@ -53,5 +53,9 @@
     "babel": "inherit",
     "failWithoutAssertions": false
   },
+  "peerDependencies": {
+    "aws-sdk": "^2",
+    "vue": "^2",
+    "vuex": "^2"
   }
 }

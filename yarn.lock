@@ -346,7 +346,7 @@ ava@^0.22.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-aws-sdk@^2.46.0:
+aws-sdk@^2:
   version "2.127.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.127.0.tgz#3d70e8f868c234a212f7b62d5a0452561a63b4dc"
   dependencies:
@@ -3952,9 +3952,13 @@ samsam@1.x, samsam@^1.1.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/samsam/-/samsam-1.2.1.tgz#edd39093a3184370cb859243b2bdf255e7d8ea67"
 
-sax@1.2.1, sax@>=0.6.0:
+sax@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
+
+sax@>=0.6.0:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
 semver-diff@^2.0.0:
   version "2.1.0"
@@ -4491,11 +4495,11 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
-vue@^2.3.0:
+vue@^2:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
 
-vuex@^2.3.1:
+vuex@^2:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-2.4.1.tgz#7890b650ba8565b70937b4e7670577082dfe8bc1"
 
