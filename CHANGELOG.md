@@ -1,10 +1,20 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.4...1.0.5) (2018-06-22)
+
+
+### Bug Fixes
+
+* `wipe()` method doesn't clear cached login tokens from AWS credentials ([6ad097a](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/6ad097a))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/LightmakerCanada/vuex-cognito-sync/compare/1.0.3...1.0.4) (2017-10-05)
 
 
 ### Bug Fixes
 
-* intermittent `Missing required key 'IdentityId' in params` errors ([5bb5d76](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/5bb5d76))
+* intermittent `Missing required key 'IdentityId' in params` errors ([5bb5d76](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/5bb5d76)), closes [/github.com/aws/amazon-cognito-identity-js/issues/445#issuecomment-310452516](https://github.com//github.com/aws/amazon-cognito-identity-js/issues/445/issues/issuecomment-310452516)
 
 
 
@@ -64,7 +74,7 @@
 
 ### Bug Fixes
 
-* don't include entire AWS SDK ([96dbbe0](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/96dbbe0))
+* don't include entire AWS SDK ([96dbbe0](https://github.com/LightmakerCanada/vuex-cognito-sync/commit/96dbbe0)), closes [/github.com/aws/amazon-cognito-js/issues/47#issuecomment-282581394](https://github.com//github.com/aws/amazon-cognito-js/issues/47/issues/issuecomment-282581394)
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "vuex-cognito-sync",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Vue.js Vuex module for AWS Cognito Sync",
   "main": "dist/index.js",
   "repository": "LightmakerCanada/vuex-cognito-sync",
