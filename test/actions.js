@@ -11,7 +11,7 @@ let classContext
 let actions
 
 test.beforeEach(t => {
-  t.context.sb = sinon.sandbox.create()
+  t.context.sb = sinon.createSandbox()
   classContext = { datasets: {} }
   actions = actionsFactory({ datasetName, classContext })
 })

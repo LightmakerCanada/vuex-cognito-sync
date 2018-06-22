@@ -10,7 +10,7 @@ import mutations from '../src/mutations'
 let state
 
 test.beforeEach(t => {
-  t.context.sb = sinon.sandbox.create()
+  t.context.sb = sinon.createSandbox()
   t.context.sb.spy(Vue, 'set')
   t.context.sb.spy(Vue, 'delete')
   state = {}

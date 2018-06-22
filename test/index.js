@@ -10,7 +10,7 @@ import mutations from '../src/mutations'
 
 // Start testing
 test.beforeEach(t => {
-  t.context.sb = sinon.sandbox.create()
+  t.context.sb = sinon.createSandbox()
 })
 
 test.afterEach.always(t => {
