@@ -84,7 +84,10 @@ test.serial('class initSyncManager() method - failure', async t => {
 })
 
 test('class wipe() method - no manager', async t => {
-  AWS.config.credentials = { clearCachedId: t.context.sb.stub() }
+  AWS.config.credentials = {
+    clearCachedId: t.context.sb.stub(),
+    params: { Logins: {} }
+  }
   CognitoSync.context.manager = undefined
   CognitoSync.context.datasets = { 'some-dataset': {} }
   await CognitoSync.wipe()
@@ -102,13 +105,17 @@ test('class wipe() method - no credentials', async t => {
 })
 
 test('class wipe() method - success', async t => {
-  AWS.config.credentials = { clearCachedId: t.context.sb.stub() }
+  AWS.config.credentials = {
+    clearCachedId: t.context.sb.stub(),
+    params: { Logins: { 'graph.facebook.com': 'asdf123' } }
+  }
   CognitoSync.context.datasets = { 'some-dataset': {} }
   CognitoSync.context.manager = { wipeData: t.context.sb.stub() }
   await CognitoSync.wipe()
   t.deepEqual(CognitoSync.context.datasets, {}, 'clears all datasets')
   sinon.assert.calledOnce(CognitoSync.context.manager.wipeData)
   sinon.assert.calledOnce(AWS.config.credentials.clearCachedId)
+  t.deepEqual(AWS.config.credentials.params.Logins, {}, 'clears cached login tokens')
 })
 
 test('constructor()', t => {
