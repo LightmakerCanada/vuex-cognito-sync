@@ -1,3 +1,6 @@
+# DEPRECATED
+This project is no longer maintained.
+
 # vuex-cognito-sync
 
 [![CircleCI](https://img.shields.io/circleci/project/github/LightmakerCanada/vuex-cognito-sync.svg)](https://circleci.com/gh/LightmakerCanada/vuex-cognito-sync)
